@@ -1,0 +1,28 @@
+{% extends "pipeline.html" %}
+<link rel="stylesheet" type="text/css" href="../static/pipeline.css">
+
+{% block content %}
+    <form class="form-format" action="" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="row">
+            {{ form.authorizer.label }}
+            {{ form.authorizer(size=6) }}
+        </div>
+        <div class="row">
+            {{ form.company.label }}
+            {{ form.company(size=6) }}
+        </div>
+        <div class="row">
+            {{ form.site.label }}
+            {{ form.site(size=6) }}
+        </div>
+        <div class="row">
+            {{ form.description.label }}
+            {{ form.description(size=32) }}
+        </div>
+        <div class="row">
+            {{ form.submit() }}
+            {{ form.cancel() }}
+        </div>
+    </form>
+{% endblock %}

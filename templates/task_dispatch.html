@@ -1,0 +1,17 @@
+{% extends "pipeline.html" %}
+<link rel="stylesheet" type="text/css" href="../static/pipeline.css">
+
+{% block header %}{{ heading_text }}{% endblock %}
+
+{% block content %}
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.task.label }}
+        {{ form.review_task() }}<br>
+        {{ form.task(size=32) }}<br><br>
+        {{ form.resource.label }}
+        {{ form.review_resource() }}<br>
+        {{ form.resource(size=6) }}<br><br>
+        {{ form.dispatch_task() }}
+    </form>
+{% endblock %}

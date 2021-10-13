@@ -1,0 +1,16 @@
+{
+  "replacement": {
+    "cardreader": "reader",
+    "lenel": "onguard",
+    "aviglon": "acm",
+    "genetec":"securitycenter"
+  },
+  "association": {
+    "mifare": "reader",
+    "magstripe": "reader",
+    "fips": "reader",
+    "iclass": "reader",
+    "prox": "reader",
+    "smart": "reader"
+  }
+}

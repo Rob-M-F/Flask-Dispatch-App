@@ -1,0 +1,71 @@
+{% extends "pipeline.html" %}
+<link rel="stylesheet" type="text/css" href="../static/pipeline.css">
+
+{% block content %}
+    <h1>{{ heading_text }}</h1>
+    <form class="form-format" action="" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="row">
+            {{ form.address.label }}
+            {{ form.address_add() }}
+            {{ form.address_select() }}
+        </div>
+        <div class="row">
+            {{ form.address() }}
+        </div>
+        <br>
+        <div class="row">
+            {{ form.company.label }}
+            {{ form.company_add() }}
+            {{ form.company_select() }}
+        </div>
+        <div class="row">
+            {{ form.company() }}
+        </div>
+        <br>
+        <div class="row">
+            {{ form.contact.label }}
+            {{ form.contact_add() }}
+            {{ form.contact_select() }}
+        </div>
+        <div class="row">
+            {{ form.contact() }}
+        </div>
+        <br>
+        <div class="row">
+            {{ form.resource.label }}
+            {{ form.resource_add() }}
+            {{ form.resource_select() }}
+        </div>
+        <div class="row">
+            {{ form.resource() }}
+        </div>
+        <br>
+        <div class="row">
+            {{ form.site.label }}
+            {{ form.site_add() }}
+            {{ form.site_select() }}
+        </div>
+        <div class="row">
+            {{ form.site() }}
+        </div>
+        <br>
+        <div class="row">
+            {{ form.tag.label }}
+            {{ form.tag_add() }}
+            {{ form.tag_select() }}
+        </div>
+        <div class="row">
+            {{ form.tag() }}
+        </div>
+        <br>
+        <div class="row">
+            {{ form.task.label }}
+            {{ form.task_add() }}
+            {{ form.task_select() }}
+        </div>
+        <div class="row">
+            {{ form.task() }}
+        </div>
+    </form>
+{% endblock %}

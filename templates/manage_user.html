@@ -1,0 +1,16 @@
+{% extends "pipeline.html" %}
+<link rel="stylesheet" type="text/css" href="../static/pipeline.css">
+
+{% block content %}
+    <h1>{{ heading_text }}</h1>
+    <form class="form-format" action="" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="row">
+            {{ form.user.label }}
+            {{ form.user_add() }}
+            {{ form.user_select() }}
+        </div>
+        <div class="row">
+            {{ form.user() }}
+    </form>
+{% endblock %}

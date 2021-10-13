@@ -1,0 +1,32 @@
+{% extends "pipeline.html" %}
+<link rel="stylesheet" type="text/css" href="../static/pipeline.css">
+
+{% block content %}
+    <h1>{{ heading_text }}</h1>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.id() }}
+        {{ form.authorizer.label }}<br>
+        {{ form.authorizer() }}
+        {{ form.review_authorizer() }}<br><br>
+        {{ form.company.label }}<br>
+        {{ form.company() }}
+        {{ form.review_company() }}<br><br>
+        {{ form.site.label }}<br>
+        {{ form.site() }}
+        {{ form.review_site() }}<br><br>
+        {{ form.description.label }}<br>
+        {{ form.description(size=32) }}<br><br>
+        {{ form.ideal.label }}<br>
+        {{ form.ideal() }}
+        {{ form.review_ideal() }}<br><br>
+        {{ form.resource.label }}<br>
+        {{ form.resource(size=6) }}
+        {{ form.review_resource() }}<br><br>
+        {{ form.tag.label }}<br>
+        {{ form.tag(size=6) }}
+        {{ form.review_tag() }}<br><br>
+        {{ form.grade.label }}<br>
+        {{ form.grade() }}
+    </form>
+{% endblock %}

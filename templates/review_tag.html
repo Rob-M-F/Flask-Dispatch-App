@@ -1,0 +1,26 @@
+{% extends "pipeline.html" %}
+<link rel="stylesheet" type="text/css" href="../static/pipeline.css">
+
+{% block content %}
+    <h1>{{ heading_text }}</h1>
+    <form class="form-format" action="" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.id() }}
+        <div class="row">
+            {{ form.name.label }}
+            {{ form.name() }}
+        </div>
+        <div class="row">
+        {{ form.segment.label }}
+        {{ form.segment() }}
+        </div>
+        <div class="row">
+        {{ form.active.label }}
+        {{ form.active()}}
+        </div>
+        <div class="row">
+            {{ form.validate_update() }}
+            {{ form.validate_cancel() }}
+        </div>
+    </form>
+{% endblock %}

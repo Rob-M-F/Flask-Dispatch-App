@@ -1,0 +1,26 @@
+{% extends "pipeline.html" %}
+<link rel="stylesheet" type="text/css" href="../static/pipeline.css">
+
+{% block layout %}
+    <form action="" method="POST">
+    {{ form.hidden_tag() }}
+        <div class="row">
+            <div class="col-3-section">
+                <h3>{{ form.ungraded_tasks.label }}</h3>
+                {{ form.ungraded_tasks(size=20) }}
+                {{ form.review_ungraded_task() }}
+            </div>
+            <div class="col-3-section">
+                <h3>{{ form.resources.label}}</h3>
+                {{ form.resources(size=20) }}
+                {{ form.review_resource() }}
+                {{ form.assign_ideal() }}
+            </div>
+            <div class="col-3-section">
+                <h3>{{ form.graded_tasks.label }}</h3>
+                {{ form.graded_tasks(size=20) }}
+                {{ form.review_graded_task() }}
+            </div>
+        </div>
+    </form>
+{% endblock %}

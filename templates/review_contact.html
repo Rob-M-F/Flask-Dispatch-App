@@ -1,0 +1,54 @@
+{% extends "pipeline.html" %}
+<link rel="stylesheet" type="text/css" href="../static/pipeline.css">
+
+{% block content %}
+    <h1>{{ heading_text }}</h1>
+    <form class="form-format" action="" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.id() }}
+        <div class="row">
+            {{ form.name.label }}
+            {{ form.name() }}
+        </div>
+        <div class="row">
+            {{ form.address.label }}
+            {{ form.address() }}
+        </div>
+        {% if resource %}
+            <div class="row">
+                {{ form.resource.label }}
+                {{ form.review_resource() }}
+            </div>
+            <div class="row">
+                {{ form.resource() }}
+            </div>
+        {% endif %}
+        <div class="row">
+            {{ form.active.label }}
+            {{ form.active()}}
+        </div>
+        <div class="row">
+            {{ form.validate_update() }}
+            {{ form.validate_cancel() }}
+        </div><br>
+        {% if site > 0 %}
+            <div class="row">
+                {{ form.sites.label }}
+                {{ form.review_site() }}
+            </div>
+            <div class="row">
+                {{ form.sites() }}
+            </div>
+        {% endif %}
+
+        {% if company %}
+            <div class="row">
+                {{ form.companies.label }}
+                {{ form.review_company() }}
+            </div>
+            <div class="row">
+                {{ form.companies() }}
+            </div>
+        {% endif %}
+    </form>
+{% endblock %}

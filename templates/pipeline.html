@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/pipeline.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {{ app_title }}</title>
+</head>
+
+<body>
+<hr>
+
+<div class="header">
+    <h1>
+        {% block header %}{{ page_title }}{% endblock %}
+    </h1>
+</div>
+
+<div class="row">
+    <div class="col-menu menu">
+        <ul>
+            <a href={{ url_for('home') }}><li>Dashboard</li></a>
+            <a href={{ url_for('add_task') }}><li>Add Task</li></a>
+            <a href={{ url_for('select_data') }}><li>Data Review</li></a>
+            <a href={{ url_for('task_grader') }}><li>Task Grader</li></a>
+            <a href={{ url_for('manage_user') }}><li>Maintenance</li></a>
+            {% if guest %}
+                <a href={{ url_for('security.login') }}><li>Login</li></a>
+            {% else %}
+                <a href={{ url_for('security.logout') }}><li>Logout</li></a>
+            {% endif %}
+        </ul>
+    </div>
+    {% block layout %}
+        <div class="col-content">
+            {% block content %}
+                <h1>Welcome to the Task Pipeline.</h1>
+                <p>Please sign in to use the application.</p>
+            {% endblock %}
+        </div>
+    {% endblock %}
+</div>
+
+<footer>
+    <p>{{ footer }}</p>
+</footer>
+
+</body>
+</html>

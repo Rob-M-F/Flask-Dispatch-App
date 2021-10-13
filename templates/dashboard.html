@@ -1,0 +1,29 @@
+{% extends "pipeline.html" %}
+<link rel="stylesheet" type="text/css" href="../static/pipeline.css">
+
+{% block layout %}
+    <form class="form-format" action="" method="POST">
+    <div class="row">
+        {{ form.hidden_tag() }}
+            <div class="col-3-section">
+                <h3>{{ form.resource_demand.label }}</h3>
+                {{ form.resource_demand(size=20) }}
+                {{ form.review_resource_demand() }}
+            </div>
+            <div class="col-3-section">
+                <h3>Trending Tags</h3>
+                {{ form.task_tags(size=20) }}
+                {{ form.review_task_tags() }}
+            </div>
+            <div class="col-3-section">
+                <h3>Tasks awaiting dispatch</h3>
+                {{ form.awaiting_dispatch(size=20) }}
+                {{ form.dispatch_task() }}
+            </div>
+    </div>
+    <div class="col-3-section">
+        <h3>Recommender Performance</h3>
+        <img src="{{ url_for("task_grade_plot") }}" alt="{{ grade }}" style="width: fit-content; height: fit-content">
+    </div>
+    </form>
+{% endblock %}

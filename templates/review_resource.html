@@ -1,0 +1,62 @@
+{% extends "pipeline.html" %}
+<link rel="stylesheet" type="text/css" href="../static/pipeline.css">
+
+{% block content %}
+    <h1>{{ heading_text }}</h1>
+    <form class="form-format" action="" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.id() }}
+        <div class="row">
+            {{ form.title.label }}
+            {{ form.title() }}
+        </div>
+        <div class="row">
+            {{ form.contact.label }}
+            {{ form.review_contact() }}
+        </div>
+        <div class="row">
+            {{ form.contact() }}
+        </div>
+        <div class="row">
+            {{ form.segment.label }}
+            {{ form.segment() }}
+        </div>
+        <div class="row">
+            {{ form.can_dispatch.label }}
+            {{ form.can_dispatch() }}
+        </div>
+        <div class="row">
+            {{ form.active.label }}
+            {{ form.active()}}
+        </div>
+        <div class="row">
+
+        </div>
+        {% if tags %}
+            <div class="row">
+            {{ form.all_tags.label }}
+            </div>
+            <div class="row">
+            {{ form.all_tags(size=6) }}
+            </div>
+            <div class="row">
+            {{ form.tag_weight.label }}
+            {{ form.tag_weight() }}
+            </div>
+            <div class="row">
+            {{ form.add_tag() }}
+            {{ form.remove_tag() }}
+            </div>
+            <div class="row">
+            {{ form.resource_tags.label }}
+            </div>
+            <div class="row">
+            {{ form.resource_tags(size=6) }}
+            </div>
+        {% endif %}
+        <div class="row">
+            {{ form.validate_update() }}
+            {{ form.validate_cancel() }}
+        </div>
+    </form>
+{% endblock %}
