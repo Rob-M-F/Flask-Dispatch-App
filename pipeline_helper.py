@@ -48,12 +48,13 @@ class PipelineHelper:
         """
         language = keyring.get_password(service_name=service_label, username='LANGUAGE')
         driver = keyring.get_password(service_name=service_label, username='DRIVER')
-        username = keyring.get_password(service_name=service_label, username='USERNAME')
+        username = keyring.get_password(service_name=service_label, username='USER')
         raw_password = keyring.get_password(service_name=service_label, username='PASSWORD')
         password = urllib.parse.quote_plus(raw_password)
         host = keyring.get_password(service_name=service_label, username='HOST')
         port = keyring.get_password(service_name=service_label, username='PORT')
         database = keyring.get_password(service_name=service_label, username='DATABASE')
+        print(f'{language}+{driver}://{username}:{password}@{host}:{port}/{database}')
         return create_engine(f'{language}+{driver}://{username}:{password}@{host}:{port}/{database}', convert_unicode=True)
 
     @staticmethod
@@ -124,6 +125,8 @@ class PipelineHelper:
         data_dict['DEBUG'] = data_dict.get('DEBUG', False)
         data_dict['HOST'] = data_dict.get('HOST', 'localhost')
         data_dict['PORT'] = data_dict.get('PORT', 3306)
+        data_dict['LANGUAGE'] = data_dict.get('LANGUAGE', 'mariadb')
+        data_dict['DRIVER'] = data_dict.get('DRIVER', 'mariadbconnector')
         data_dict['USER'] = data_dict.get('USER', 'pipeline_connect')
         data_dict['DATABASE'] = data_dict.get('DATABASE', 'pipeline_data')
         data_dict['PASSWORD'] = "********"
@@ -134,6 +137,19 @@ class PipelineHelper:
         except IOError as e:
             file_error = True
         return file_error
+
+    @staticmethod
+    def initialize_keyring(recurse=True):
+        pipeline_config = PipelineHelper.read_pipeline_config(recurse=recurse)
+        if 'PASSWORD' in pipeline_config:
+            if pipeline_config['PASSWORD'] != "********":
+                PipelineHelper.set_keyring_data(pipeline_config['SERVICE_LABEL'], "PASSWORD", pipeline_config["PASSWORD"])
+        if 'SERVICE_LABEL' in pipeline_config:
+            for key in pipeline_config:
+                if key != 'SERVICE_LABEL':
+                    if PipelineHelper.get_keyring_data(key, pipeline_config['SERVICE_LABEL'], False) is None:
+                        PipelineHelper.set_keyring_data(pipeline_config['SERVICE_LABEL'], key, pipeline_config[key])
+        return pipeline_config
 
     @staticmethod
     def get_demo_data_from_file(file_name, display=False):

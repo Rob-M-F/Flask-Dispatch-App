@@ -3,8 +3,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from pipeline_helper import PipelineHelper
 
 
-pipeline_config = PipelineHelper.read_pipeline_config(recurse=True)
+pipeline_config = PipelineHelper.initialize_keyring(recurse=True)
 engine = PipelineHelper.get_engine(service_label=pipeline_config['SERVICE_LABEL'])
+
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))

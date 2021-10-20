@@ -9,6 +9,7 @@ from pubsub import pub
 pipeline_config = PipelineHelper.read_pipeline_config(recurse=True)
 app = Flask(__name__)
 app.config['DEBUG'] = pipeline_config['DEBUG']
+
 app.config['SECRET_KEY'] = PipelineHelper.get_keyring_data(service_id=pipeline_config['SERVICE_LABEL'],
                                                            data_field='SECRET', generate_if_none=True)
 app.config['SECURITY_PASSWORD_SALT'] = PipelineHelper.get_keyring_data(service_id=pipeline_config['SERVICE_LABEL'],
@@ -42,8 +43,6 @@ def check_task_statuses():
 
     for task in Task.query.filter(Task.parsed == 0).all():
         app.input_broker.publish(message=task.id)
-
-
 
     return Task.query.filter(Task.ranked == 1).filter(Task.dispatched == 0).all()
 
