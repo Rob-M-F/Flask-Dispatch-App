@@ -1,4 +1,4 @@
-from ParsingPipeline.pipeline import DatabaseConnection
+from pipeline_database import db_session
 from random import randint
 
 
@@ -336,14 +336,7 @@ class DataGenerator:
 
 
 if __name__ == "__main__":
-    import json
-    with open("database_string.config", 'r') as infile:
-        data = json.load(infile)
-    data_conn = DatabaseConnection(host=data['host'],
-                                   port=data['port'],
-                                   database=data['database'],
-                                   user=data['user'],
-                                   password=data['password'])
+    data_conn = db_session.query_property
     tags = data_conn.get_object(object_type='tag')
     print("Tag listing: ", tags)
 
@@ -392,7 +385,6 @@ if __name__ == "__main__":
                         problem_list=problems if problems else None
                         )
     for _ in range(1000):
-        value_set = f"'{details['name']}', {details['method']['id']}"
-        statement = f"INSERT INTO contact_details(name, method) VALUES({value_set})"
-        print(statement)
-        #data_conn.execute_command(statement=statement)
+        # value_set = f"'{details['name']}', {details['method']['id']}"
+        # statement = f"INSERT INTO contact_details(name, method) VALUES({value_set})"
+        # print(statement)
