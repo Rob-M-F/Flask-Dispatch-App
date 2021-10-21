@@ -54,7 +54,8 @@ class PipelineHelper:
         host = keyring.get_password(service_name=service_label, username='HOST')
         port = keyring.get_password(service_name=service_label, username='PORT')
         database = keyring.get_password(service_name=service_label, username='DATABASE')
-        return create_engine(f'{language}+{driver}://{username}:{password}@{host}:{port}/{database}', convert_unicode=True)
+        return create_engine(f'{language}+{driver}://{username}:{password}@{host}:{port}/{database}',
+                             convert_unicode=True)
 
     @staticmethod
     def set_database(service_label, dataset):
@@ -104,7 +105,7 @@ class PipelineHelper:
 
         try:
             if new_file:
-                file_error = PipelineHelper.overwrite_pipeline_config()
+                _ = PipelineHelper.overwrite_pipeline_config()
                 return PipelineHelper.read_pipeline_config(recurse=False)
         except IOError as e:
             file_error = True
@@ -125,7 +126,7 @@ class PipelineHelper:
         data_dict['HOST'] = data_dict.get('HOST', 'localhost')
         data_dict['PORT'] = data_dict.get('PORT', 3306)
         data_dict['LANGUAGE'] = data_dict.get('LANGUAGE', 'mariadb')
-        data_dict['DRIVER'] = data_dict.get('DRIVER', 'mariadbconnector')
+        data_dict['DRIVER'] = data_dict.get('DRIVER', 'pymysql')
         data_dict['USER'] = data_dict.get('USER', 'pipeline_connect')
         data_dict['DATABASE'] = data_dict.get('DATABASE', 'pipeline_data')
         data_dict['PASSWORD'] = "********"
@@ -133,7 +134,7 @@ class PipelineHelper:
         try:
             with open("config/pipeline.config", 'w') as outfile:
                 outfile.write(json.dumps(data_dict))
-        except IOError as e:
+        except IOError:
             file_error = True
         return file_error
 
@@ -142,7 +143,9 @@ class PipelineHelper:
         pipeline_config = PipelineHelper.read_pipeline_config(recurse=recurse)
         if 'PASSWORD' in pipeline_config:
             if pipeline_config['PASSWORD'] != "********":
-                PipelineHelper.set_keyring_data(pipeline_config['SERVICE_LABEL'], "PASSWORD", pipeline_config["PASSWORD"])
+                PipelineHelper.set_keyring_data(pipeline_config['SERVICE_LABEL'],
+                                                "PASSWORD",
+                                                pipeline_config["PASSWORD"])
         if 'SERVICE_LABEL' in pipeline_config:
             for key in pipeline_config:
                 if key != 'SERVICE_LABEL':

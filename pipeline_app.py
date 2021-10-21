@@ -23,7 +23,7 @@ security = Security(app, user_datastore)
 @app.before_first_request
 def create_user():
     init_db()
-    #user_datastore.create_user(email='demo@example.com', username='demo', password=hash_password('Larynx'))
+    # user_datastore.create_user(email='demo@example.com', username='demo', password=hash_password('Larynx'))
     if not User.query.all():
         # user_datastore.create_role(name='admin')
         admin_user = user_datastore.create_user(email='admin', password=hash_password('Larynx'))
@@ -32,8 +32,8 @@ def create_user():
 
 
 def check_task_statuses():
-    for task in Task.query.filter(Task.ranked == 1).filter(Task.grade.is_(None)).filter(
-            Task.ideal_resource.isnot(None)).all():
+    for task in Task.query.filter(Task.ranked == 1).filter(Task.grade is None).filter(
+            Task.ideal_resource is not None).all():
         app.ranker_broker.publish(message=task.id)
 
     for task in Task.query.filter(Task.tagged == 1).filter(Task.ranked == 0).all():

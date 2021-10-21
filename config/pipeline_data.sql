@@ -16,7 +16,7 @@
 
 DROP TABLE IF EXISTS `address`;
 CREATE TABLE `address` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `gps` bigint(20) DEFAULT NULL,
   `number` varchar(60) DEFAULT NULL,
   `street` varchar(60) DEFAULT NULL,
@@ -44,7 +44,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `company`;
 CREATE TABLE `company` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) DEFAULT NULL,
   `active` tinyint(1) DEFAULT NULL,
   `resource_restricted` tinyint(1) NOT NULL DEFAULT '0',
@@ -67,7 +67,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `company_tags`;
 CREATE TABLE `company_tags` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `company_id` bigint(20) DEFAULT NULL,
   `tag_id` bigint(20) DEFAULT NULL,
   `weight` decimal(10,9) DEFAULT NULL,
@@ -95,7 +95,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `contact`;
 CREATE TABLE `contact` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) DEFAULT NULL,
   `address_id` bigint(20) DEFAULT NULL,
   `active` tinyint(1) DEFAULT NULL,
@@ -121,7 +121,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `contacts_companies`;
 CREATE TABLE `contacts_companies` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `contact_id` bigint(20) DEFAULT NULL,
   `company_id` bigint(20) DEFAULT NULL,
   `authorizer` tinyint(1) NOT NULL DEFAULT '0',
@@ -147,7 +147,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `contacts_sites`;
 CREATE TABLE `contacts_sites` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `contact_id` bigint(20) DEFAULT NULL,
   `site_id` bigint(20) DEFAULT NULL,
   `authorizer` tinyint(1) NOT NULL DEFAULT '0',
@@ -173,7 +173,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `contacts_tags`;
 CREATE TABLE `contacts_tags` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `contact_id` bigint(20) DEFAULT NULL,
   `tag_id` bigint(20) DEFAULT NULL,
   `weight` decimal(10,9) DEFAULT NULL,
@@ -200,7 +200,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `context_tags`;
 CREATE TABLE `context_tags` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `task_id` bigint(20) DEFAULT NULL,
   `tag_id` bigint(20) DEFAULT NULL,
   `name` varchar(60) DEFAULT NULL,
@@ -227,7 +227,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `resource`;
 CREATE TABLE `resource` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(60) DEFAULT NULL,
   `contact_id` bigint(20) DEFAULT NULL,
   `active` tinyint(1) DEFAULT NULL,
@@ -256,7 +256,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `resource_sites`;
 CREATE TABLE `resource_sites` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `resource_id` bigint(20) DEFAULT NULL,
   `site_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -281,7 +281,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `resources_companies`;
 CREATE TABLE `resources_companies` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `resource_id` bigint(20) DEFAULT NULL,
   `company_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -306,7 +306,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `resources_tags`;
 CREATE TABLE `resources_tags` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `resource_id` bigint(20) DEFAULT NULL,
   `tag_id` bigint(20) DEFAULT NULL,
   `weight` decimal(10,9) DEFAULT NULL,
@@ -334,7 +334,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(80) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -357,7 +357,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `roles_users`;
 CREATE TABLE `roles_users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT NULL,
   `role_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -383,7 +383,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `segment`;
 CREATE TABLE `segment` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) DEFAULT NULL,
   `active` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -405,7 +405,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `site`;
 CREATE TABLE `site` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) DEFAULT NULL,
   `address_id` bigint(20) DEFAULT NULL,
   `company_id` bigint(20) DEFAULT NULL,
@@ -434,7 +434,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `sites_tags`;
 CREATE TABLE `sites_tags` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `site_id` bigint(20) DEFAULT NULL,
   `tag_id` bigint(20) DEFAULT NULL,
   `weight` decimal(10,9) DEFAULT NULL,
@@ -462,7 +462,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) DEFAULT NULL,
   `active` tinyint(1) DEFAULT NULL,
   `segment_id` bigint(20) DEFAULT NULL,
@@ -487,7 +487,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `task`;
 CREATE TABLE `task` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `description` varchar(512) DEFAULT NULL,
   `user_id` bigint(20) DEFAULT NULL,
   `authorizer_id` bigint(20) DEFAULT NULL,
@@ -532,7 +532,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `task_parsing`;
 CREATE TABLE `task_parsing` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `task_id` bigint(20) DEFAULT NULL,
   `ordinal` int(11) DEFAULT NULL,
   `parsed` varchar(512) DEFAULT NULL,
@@ -557,7 +557,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `task_resources`;
 CREATE TABLE `task_resources` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `task_id` bigint(20) DEFAULT NULL,
   `resource_id` bigint(20) DEFAULT NULL,
   `rank` int(11) DEFAULT NULL,
@@ -585,7 +585,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `task_tags`;
 CREATE TABLE `task_tags` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `task_id` bigint(20) DEFAULT NULL,
   `tag_id` bigint(20) DEFAULT NULL,
   `weight` decimal(10,9) DEFAULT NULL,
@@ -613,7 +613,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `task_tracker`;
 CREATE TABLE `task_tracker` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `task_id` bigint(20) DEFAULT NULL,
   `parsed` tinyint(1) DEFAULT NULL,
   `tagged` tinyint(1) DEFAULT NULL,
@@ -639,7 +639,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `alt_id` varchar(64) DEFAULT NULL,
   `fs_uniquifier` varchar(64) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,

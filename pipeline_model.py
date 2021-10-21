@@ -57,7 +57,7 @@ class PipelineBase:
 
 class Tag(Base, PipelineBase):
     __tablename__ = 'tag'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     name = Column(String(60))
     active = Column(Boolean, default=True)
     segment_id = Column(BigInteger(), ForeignKey('segment.id'))
@@ -68,7 +68,7 @@ class Tag(Base, PipelineBase):
 
 class Resource(Base, PipelineBase):
     __tablename__ = 'resource'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     title = Column(String(60))
     contact_id = Column(BigInteger(), ForeignKey('contact.id'))
     active = Column(Boolean, default=True)
@@ -83,7 +83,7 @@ class Resource(Base, PipelineBase):
 
 class Segment(Base, PipelineBase):
     __tablename__ = 'segment'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     name = Column(String(60))
     active = Column(Boolean, default=True)
     tags = relationship(Tag, backref='segment')
@@ -95,7 +95,7 @@ class Segment(Base, PipelineBase):
 
 class Company(Base, PipelineBase):
     __tablename__ = 'company'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     name = Column(String(60))
     active = Column(Boolean, default=True)
     resource_restricted = Column(Boolean, default=False)
@@ -110,14 +110,14 @@ class Company(Base, PipelineBase):
 
 class RolesUsers(Base, PipelineBase):
     __tablename__ = 'roles_users'
-    id = Column(Integer(), primary_key=True)
+    id = Column(Integer(), primary_key=True, autoincrement=True)
     user_id = Column('user_id', BigInteger(), ForeignKey('user.id'))
     role_id = Column('role_id', BigInteger(), ForeignKey('role.id'))
 
 
 class Role(Base, PipelineBase, RoleMixin):
     __tablename__ = 'role'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     name = Column(String(80), unique=True)
     description = Column(String(255))
 
@@ -127,7 +127,7 @@ class Role(Base, PipelineBase, RoleMixin):
 
 class ContactSites(Base, PipelineBase):
     __tablename__ = 'contacts_sites'
-    id = Column(Integer(), primary_key=True)
+    id = Column(Integer(), primary_key=True, autoincrement=True)
     contact_id = Column('contact_id', BigInteger(), ForeignKey('contact.id'))
     site_id = Column('site_id', BigInteger(), ForeignKey('site.id'))
     authorizer = Column(Boolean, default=False)
@@ -135,14 +135,14 @@ class ContactSites(Base, PipelineBase):
 
 class ResourceSites(Base, PipelineBase):
     __tablename__ = 'resource_sites'
-    id = Column(Integer(), primary_key=True)
+    id = Column(Integer(), primary_key=True, autoincrement=True)
     resource_id = Column('resource_id', BigInteger(), ForeignKey('resource.id'))
     site_id = Column('site_id', BigInteger(), ForeignKey('site.id'))
 
 
 class ContactCompanies(Base, PipelineBase):
     __tablename__ = 'contacts_companies'
-    id = Column(Integer(), primary_key=True)
+    id = Column(Integer(), primary_key=True, autoincrement=True)
     contact_id = Column('contact_id', BigInteger(), ForeignKey('contact.id'))
     company_id = Column('company_id', BigInteger(), ForeignKey('company.id'))
     authorizer = Column(Boolean, default=False)
@@ -150,14 +150,14 @@ class ContactCompanies(Base, PipelineBase):
 
 class ResourceCompanies(Base, PipelineBase):
     __tablename__ = 'resources_companies'
-    id = Column(Integer(), primary_key=True)
+    id = Column(Integer(), primary_key=True, autoincrement=True)
     resource_id = Column('resource_id', BigInteger(), ForeignKey('resource.id'))
     company_id = Column('company_id', BigInteger(), ForeignKey('company.id'))
 
 
 class Contact(Base, PipelineBase):
     __tablename__ = 'contact'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     name = Column(String(60))
     address_id = Column(BigInteger(), ForeignKey('address.id'))
     active = Column(Boolean, default=True)
@@ -172,7 +172,7 @@ class Contact(Base, PipelineBase):
 
 class Task(Base, PipelineBase):
     __tablename__ = 'task'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     description = Column(String(512))
     user_id = Column(BigInteger, ForeignKey('user.id'))
     authorizer_id = Column(BigInteger, ForeignKey('contact.id'))
@@ -197,7 +197,7 @@ class Task(Base, PipelineBase):
 
 class User(Base, PipelineBase, UserMixin):
     __tablename__ = 'user'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     alt_id = Column(String(64), unique=True)
     fs_uniquifier = Column(String(64), unique=True)
     email = Column(String(128), unique=True)
@@ -226,7 +226,7 @@ class User(Base, PipelineBase, UserMixin):
 
 class Site(Base, PipelineBase):
     __tablename__ = 'site'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     name = Column(String(60))
     address_id = Column(BigInteger(), ForeignKey('address.id'))
     company_id = Column(BigInteger(), ForeignKey('company.id'))
@@ -241,7 +241,7 @@ class Site(Base, PipelineBase):
 
 class Address(Base, PipelineBase):
     __tablename__ = 'address'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     gps = Column(BigInteger())
     number = Column(String(60))
     street = Column(String(60))
@@ -259,7 +259,7 @@ class Address(Base, PipelineBase):
 
 class CompanyTags(Base, PipelineBase):
     __tablename__ = 'company_tags'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     company_id = Column('company_id', BigInteger(), ForeignKey('company.id'))
     tag_id = Column('tag_id', BigInteger(), ForeignKey('tag.id'))
     weight = Column(Numeric(precision=10, scale=9))
@@ -268,7 +268,7 @@ class CompanyTags(Base, PipelineBase):
 
 class ContactTags(Base, PipelineBase):
     __tablename__ = 'contacts_tags'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     contact_id = Column('contact_id', BigInteger(), ForeignKey('contact.id'))
     tag_id = Column('tag_id', BigInteger(), ForeignKey('tag.id'))
     weight = Column(Numeric(precision=10, scale=9))
@@ -277,7 +277,7 @@ class ContactTags(Base, PipelineBase):
 
 class SiteTags(Base, PipelineBase):
     __tablename__ = 'sites_tags'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     site_id = Column('site_id', BigInteger(), ForeignKey('site.id'))
     tag_id = Column('tag_id', BigInteger(), ForeignKey('tag.id'))
     weight = Column(Numeric(precision=10, scale=9))
@@ -286,7 +286,7 @@ class SiteTags(Base, PipelineBase):
 
 class ResourceTags(Base, PipelineBase):
     __tablename__ = 'resources_tags'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     resource_id = Column('resource_id', BigInteger(), ForeignKey('resource.id'))
     tag_id = Column('tag_id', BigInteger(), ForeignKey('tag.id'))
     weight = Column(Numeric(precision=10, scale=9))
@@ -295,7 +295,7 @@ class ResourceTags(Base, PipelineBase):
 
 class TaskParsing(Base, PipelineBase):
     __tablename__ = 'task_parsing'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     task_id = Column('task_id', BigInteger(), ForeignKey('task.id'))
     ordinal = Column(Integer, default=0)
     parsed = Column(String(512))
@@ -303,7 +303,7 @@ class TaskParsing(Base, PipelineBase):
 
 class TaskTags(Base, PipelineBase):
     __tablename__ = 'task_tags'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     task_id = Column('task_id', BigInteger(), ForeignKey('task.id'))
     tag_id = Column('tag_id', BigInteger(), ForeignKey('tag.id'))
     weight = Column(Numeric(precision=10, scale=9))
@@ -312,7 +312,7 @@ class TaskTags(Base, PipelineBase):
 
 class TaskResources(Base, PipelineBase):
     __tablename__ = 'task_resources'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     task_id = Column('task_id', BigInteger(), ForeignKey('task.id'))
     resource_id = Column('resource_id', BigInteger(), ForeignKey('resource.id'))
     rank = Column(Integer, default=1)
@@ -321,7 +321,7 @@ class TaskResources(Base, PipelineBase):
 
 class ContextTags(Base, PipelineBase):
     __tablename__ = 'context_tags'
-    id = Column(BigInteger(), primary_key=True)
+    id = Column(BigInteger(), primary_key=True, autoincrement=True)
     task_id = Column('task_id', BigInteger(), ForeignKey('task.id'))
     tag_id = Column('tag_id', BigInteger(), ForeignKey('tag.id'))
     name = Column(String(60))

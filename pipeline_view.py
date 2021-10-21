@@ -148,7 +148,9 @@ def home():
                                        f"{task.id}: {Site.query.filter(Site.id == task.site_id).first().name}")
                                       for task in awaiting_dispatch]
     if form.validate_on_submit():
-        print(f"Resource selected: {form.resource_demand.data}, Tag selected: {form.task_tags.data}, Task selected {form.awaiting_dispatch.data}")
+        print(f"Resource selected: {form.resource_demand.data}, ",
+              f"Tag selected: {form.task_tags.data}, ",
+              f"Task selected {form.awaiting_dispatch.data}")
         if form.review_resource_demand.data:
             return redirect(url_for('review_resource', item_id=form.resource_demand.data))
         elif form.review_task_tags.data:
