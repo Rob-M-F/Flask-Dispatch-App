@@ -23,10 +23,11 @@ security = Security(app, user_datastore)
 @app.before_first_request
 def create_user():
     init_db()
+    #user_datastore.create_user(email='demo@example.com', username='demo', password=hash_password('Larynx'))
     if not User.query.all():
         # user_datastore.create_role(name='admin')
-        user_datastore.create_user(email='admin', password=hash_password('Larynx'))
-        user_datastore.add_role_to_user(user='admin', role='admin')
+        admin_user = user_datastore.create_user(email='admin', password=hash_password('Larynx'))
+        user_datastore.add_role_to_user(user=admin_user, role='admin')
     db_session.commit()
 
 

@@ -54,7 +54,6 @@ class PipelineHelper:
         host = keyring.get_password(service_name=service_label, username='HOST')
         port = keyring.get_password(service_name=service_label, username='PORT')
         database = keyring.get_password(service_name=service_label, username='DATABASE')
-        print(f'{language}+{driver}://{username}:{password}@{host}:{port}/{database}')
         return create_engine(f'{language}+{driver}://{username}:{password}@{host}:{port}/{database}', convert_unicode=True)
 
     @staticmethod

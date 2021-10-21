@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcfb407c-86e9-4dce-95a3-869628aa47bf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Flask-Dispatch-App.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/MyPC.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/task_pipeline.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database_string.config" beforeDir="false" afterPath="$PROJECT_DIR$/config/database_string.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/pipeline.config" beforeDir="false" afterPath="$PROJECT_DIR$/config/pipeline.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pipeline_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline_app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipeline_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline_database.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pipeline_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline_helper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -146,7 +132,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1634763996841</updated>
-      <workItem from="1634764030550" duration="5784000" />
+      <workItem from="1634764030550" duration="8377000" />
     </task>
     <servers />
   </component>
@@ -156,6 +142,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Flask_Dispatch_App$Flask__pipeline_app_py_.coverage" NAME="Flask (pipeline_app.py) Coverage Results" MODIFIED="1634765647981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Flask_Dispatch_App$pipeline_service.coverage" NAME="pipeline_service Coverage Results" MODIFIED="1634764409214" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Flask_Dispatch_App$pipeline_view.coverage" NAME="pipeline_view Coverage Results" MODIFIED="1634772426466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Flask_Dispatch_App$pipeline_view.coverage" NAME="pipeline_view Coverage Results" MODIFIED="1634812710795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
